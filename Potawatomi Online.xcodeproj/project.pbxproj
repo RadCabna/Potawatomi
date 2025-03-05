@@ -8,18 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		DD0CAA682D78D75E00F083CB /* Potawatomi_OnlineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA672D78D75E00F083CB /* Potawatomi_OnlineApp.swift */; };
-		DD0CAA6A2D78D75E00F083CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA692D78D75E00F083CB /* ContentView.swift */; };
 		DD0CAA6C2D78D75F00F083CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0CAA6B2D78D75F00F083CB /* Assets.xcassets */; };
 		DD0CAA702D78D75F00F083CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0CAA6F2D78D75F00F083CB /* Preview Assets.xcassets */; };
+		DD0CAA7E2D78DF1400F083CB /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA7D2D78DF1400F083CB /* Background.swift */; };
+		DD0CAA802D78DF2900F083CB /* SizeExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA7F2D78DF2900F083CB /* SizeExtention.swift */; };
+		DD0CAA822D78DF3700F083CB /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA812D78DF3700F083CB /* ColorExtention.swift */; };
+		DD0CAA842D78E02200F083CB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA832D78E02200F083CB /* Model.swift */; };
+		DD0CAA862D78E06600F083CB /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA852D78E06600F083CB /* Loading.swift */; };
+		DD0CAA882D78E06F00F083CB /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA872D78E06F00F083CB /* Menu.swift */; };
+		DD0CAA8A2D78E07900F083CB /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA892D78E07900F083CB /* Game.swift */; };
+		DD0CAA8C2D78E0A000F083CB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA8B2D78E0A000F083CB /* Coordinator.swift */; };
+		DD0CAA8E2D78E17500F083CB /* PassionOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD0CAA8D2D78E17500F083CB /* PassionOne-Regular.ttf */; };
+		DD0CAA912D78EDAE00F083CB /* ChoseGameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA902D78EDAE00F083CB /* ChoseGameMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DD0CAA642D78D75E00F083CB /* Potawatomi Online.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Potawatomi Online.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD0CAA672D78D75E00F083CB /* Potawatomi_OnlineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Potawatomi_OnlineApp.swift; sourceTree = "<group>"; };
-		DD0CAA692D78D75E00F083CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DD0CAA6B2D78D75F00F083CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD0CAA6D2D78D75F00F083CB /* Potawatomi_Online.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Potawatomi_Online.entitlements; sourceTree = "<group>"; };
 		DD0CAA6F2D78D75F00F083CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DD0CAA7D2D78DF1400F083CB /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		DD0CAA7F2D78DF2900F083CB /* SizeExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeExtention.swift; sourceTree = "<group>"; };
+		DD0CAA812D78DF3700F083CB /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
+		DD0CAA832D78E02200F083CB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		DD0CAA852D78E06600F083CB /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		DD0CAA872D78E06F00F083CB /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		DD0CAA892D78E07900F083CB /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		DD0CAA8B2D78E0A000F083CB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DD0CAA8D2D78E17500F083CB /* PassionOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PassionOne-Regular.ttf"; sourceTree = "<group>"; };
+		DD0CAA8F2D78E18200F083CB /* Potawatomi-Online-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Potawatomi-Online-Info.plist"; sourceTree = SOURCE_ROOT; };
+		DD0CAA902D78EDAE00F083CB /* ChoseGameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseGameMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +71,15 @@
 		DD0CAA662D78D75E00F083CB /* Potawatomi Online */ = {
 			isa = PBXGroup;
 			children = (
+				DD0CAA8F2D78E18200F083CB /* Potawatomi-Online-Info.plist */,
 				DD0CAA672D78D75E00F083CB /* Potawatomi_OnlineApp.swift */,
-				DD0CAA692D78D75E00F083CB /* ContentView.swift */,
+				DD0CAA7C2D78DF0300F083CB /* Views */,
+				DD0CAA7B2D78DEFB00F083CB /* SubViews */,
+				DD0CAA7A2D78DB1100F083CB /* Extentions */,
+				DD0CAA792D78DB0500F083CB /* Coordinator */,
+				DD0CAA782D78DAFE00F083CB /* Fonts */,
+				DD0CAA772D78DAF800F083CB /* Models */,
+				DD0CAA762D78DAEF00F083CB /* Sounds */,
 				DD0CAA6B2D78D75F00F083CB /* Assets.xcassets */,
 				DD0CAA6D2D78D75F00F083CB /* Potawatomi_Online.entitlements */,
 				DD0CAA6E2D78D75F00F083CB /* Preview Content */,
@@ -67,6 +93,65 @@
 				DD0CAA6F2D78D75F00F083CB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DD0CAA762D78DAEF00F083CB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		DD0CAA772D78DAF800F083CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CAA832D78E02200F083CB /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DD0CAA782D78DAFE00F083CB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CAA8D2D78E17500F083CB /* PassionOne-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		DD0CAA792D78DB0500F083CB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CAA8B2D78E0A000F083CB /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		DD0CAA7A2D78DB1100F083CB /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CAA7F2D78DF2900F083CB /* SizeExtention.swift */,
+				DD0CAA812D78DF3700F083CB /* ColorExtention.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		DD0CAA7B2D78DEFB00F083CB /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CAA7D2D78DF1400F083CB /* Background.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		DD0CAA7C2D78DF0300F083CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CAA852D78E06600F083CB /* Loading.swift */,
+				DD0CAA872D78E06F00F083CB /* Menu.swift */,
+				DD0CAA902D78EDAE00F083CB /* ChoseGameMode.swift */,
+				DD0CAA892D78E07900F083CB /* Game.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0CAA702D78D75F00F083CB /* Preview Assets.xcassets in Resources */,
+				DD0CAA8E2D78E17500F083CB /* PassionOne-Regular.ttf in Resources */,
 				DD0CAA6C2D78D75F00F083CB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,8 +225,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD0CAA6A2D78D75E00F083CB /* ContentView.swift in Sources */,
+				DD0CAA8A2D78E07900F083CB /* Game.swift in Sources */,
 				DD0CAA682D78D75E00F083CB /* Potawatomi_OnlineApp.swift in Sources */,
+				DD0CAA882D78E06F00F083CB /* Menu.swift in Sources */,
+				DD0CAA912D78EDAE00F083CB /* ChoseGameMode.swift in Sources */,
+				DD0CAA822D78DF3700F083CB /* ColorExtention.swift in Sources */,
+				DD0CAA842D78E02200F083CB /* Model.swift in Sources */,
+				DD0CAA862D78E06600F083CB /* Loading.swift in Sources */,
+				DD0CAA7E2D78DF1400F083CB /* Background.swift in Sources */,
+				DD0CAA802D78DF2900F083CB /* SizeExtention.swift in Sources */,
+				DD0CAA8C2D78E0A000F083CB /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +368,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Potawatomi-Online-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -284,7 +379,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
@@ -292,7 +387,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "f1.Potawatomi-Online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,6 +408,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Potawatomi-Online-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -322,7 +419,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
@@ -330,7 +427,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "f1.Potawatomi-Online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
