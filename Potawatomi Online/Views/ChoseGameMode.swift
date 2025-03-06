@@ -11,6 +11,7 @@ struct ChoseGameMode: View {
     @AppStorage("sound") var sound = true
     @AppStorage("music") var music = true
     @AppStorage("coinCount") var coinCount = 0
+    @AppStorage("pvp") var pvp = true
     @State private var shadowRadiusArray: [CGFloat] = [0,0,0,0,0,0]
     var body: some View {
         ZStack {
@@ -68,12 +69,18 @@ struct ChoseGameMode: View {
                     .frame(height: screenWidth*0.125)
                     .shadow(color: .red, radius: shadowRadiusArray[3])
                     .shadow(color: .red, radius: shadowRadiusArray[3])
+                    .onTapGesture {
+                        pvp = false
+                    }
                 Image("p2pButton")
                     .resizable()
                     .scaledToFit()
                     .frame(height: screenWidth*0.125)
                     .shadow(color: .red, radius: shadowRadiusArray[4])
                     .shadow(color: .red, radius: shadowRadiusArray[4])
+                    .onTapGesture {
+                        pvp = true
+                    }
             }
             .offset(y: screenWidth*0.05)
         }

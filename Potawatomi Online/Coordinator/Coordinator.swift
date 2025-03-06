@@ -12,6 +12,7 @@ enum CoordinatorView: Equatable {
     case loading
     case mainMenu
     case game
+    case gameMode
 }
 
 final class Coordinator: ObservableObject {
@@ -26,6 +27,8 @@ final class Coordinator: ObservableObject {
             view = AnyView(Menu())
         case .game:
             view = AnyView(Game())
+        case .gameMode:
+            view = AnyView(ChoseGameMode())
         }
         return view
     }
