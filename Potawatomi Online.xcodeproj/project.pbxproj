@@ -20,6 +20,12 @@
 		DD0CAA8C2D78E0A000F083CB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA8B2D78E0A000F083CB /* Coordinator.swift */; };
 		DD0CAA8E2D78E17500F083CB /* PassionOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD0CAA8D2D78E17500F083CB /* PassionOne-Regular.ttf */; };
 		DD0CAA912D78EDAE00F083CB /* ChoseGameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA902D78EDAE00F083CB /* ChoseGameMode.swift */; };
+		DD75F0E52D7F488900C1A4D5 /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0E42D7F488900C1A4D5 /* WinView.swift */; };
+		DD75F0E72D7F4A6700C1A4D5 /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0E62D7F4A6700C1A4D5 /* LoseView.swift */; };
+		DD75F0E92D7F4B4900C1A4D5 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0E82D7F4B4900C1A4D5 /* PauseView.swift */; };
+		DD75F0EB2D7F60B200C1A4D5 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0EA2D7F60B200C1A4D5 /* Shop.swift */; };
+		DD75F0ED2D7F935C00C1A4D5 /* HowToPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0EC2D7F935C00C1A4D5 /* HowToPlay.swift */; };
+		DD75F0EF2D7F9A1800C1A4D5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0EE2D7F9A1800C1A4D5 /* Settings.swift */; };
 		DDEF9BF02D7A119B00108ECF /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF9BEF2D7A119B00108ECF /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +46,12 @@
 		DD0CAA8D2D78E17500F083CB /* PassionOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PassionOne-Regular.ttf"; sourceTree = "<group>"; };
 		DD0CAA8F2D78E18200F083CB /* Potawatomi-Online-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Potawatomi-Online-Info.plist"; sourceTree = SOURCE_ROOT; };
 		DD0CAA902D78EDAE00F083CB /* ChoseGameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseGameMode.swift; sourceTree = "<group>"; };
+		DD75F0E42D7F488900C1A4D5 /* WinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
+		DD75F0E62D7F4A6700C1A4D5 /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
+		DD75F0E82D7F4B4900C1A4D5 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
+		DD75F0EA2D7F60B200C1A4D5 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
+		DD75F0EC2D7F935C00C1A4D5 /* HowToPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlay.swift; sourceTree = "<group>"; };
+		DD75F0EE2D7F9A1800C1A4D5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DDEF9BEF2D7A119B00108ECF /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +154,12 @@
 			isa = PBXGroup;
 			children = (
 				DD0CAA7D2D78DF1400F083CB /* Background.swift */,
+				DD75F0E42D7F488900C1A4D5 /* WinView.swift */,
+				DD75F0E62D7F4A6700C1A4D5 /* LoseView.swift */,
+				DD75F0E82D7F4B4900C1A4D5 /* PauseView.swift */,
+				DD75F0EA2D7F60B200C1A4D5 /* Shop.swift */,
+				DD75F0EC2D7F935C00C1A4D5 /* HowToPlay.swift */,
+				DD75F0EE2D7F9A1800C1A4D5 /* Settings.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -229,16 +247,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0CAA8A2D78E07900F083CB /* Game.swift in Sources */,
+				DD75F0ED2D7F935C00C1A4D5 /* HowToPlay.swift in Sources */,
 				DD0CAA682D78D75E00F083CB /* Potawatomi_OnlineApp.swift in Sources */,
+				DD75F0EF2D7F9A1800C1A4D5 /* Settings.swift in Sources */,
 				DD0CAA882D78E06F00F083CB /* Menu.swift in Sources */,
+				DD75F0EB2D7F60B200C1A4D5 /* Shop.swift in Sources */,
 				DD0CAA912D78EDAE00F083CB /* ChoseGameMode.swift in Sources */,
 				DD0CAA822D78DF3700F083CB /* ColorExtention.swift in Sources */,
 				DD0CAA842D78E02200F083CB /* Model.swift in Sources */,
 				DD0CAA862D78E06600F083CB /* Loading.swift in Sources */,
 				DD0CAA7E2D78DF1400F083CB /* Background.swift in Sources */,
 				DD0CAA802D78DF2900F083CB /* SizeExtention.swift in Sources */,
+				DD75F0E52D7F488900C1A4D5 /* WinView.swift in Sources */,
+				DD75F0E72D7F4A6700C1A4D5 /* LoseView.swift in Sources */,
 				DDEF9BF02D7A119B00108ECF /* SoundManager.swift in Sources */,
 				DD0CAA8C2D78E0A000F083CB /* Coordinator.swift in Sources */,
+				DD75F0E92D7F4B4900C1A4D5 /* PauseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

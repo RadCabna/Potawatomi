@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChoseGameMode: View {
+    @EnvironmentObject var coordinator: Coordinator
     @AppStorage("sound") var sound = true
     @AppStorage("music") var music = true
     @AppStorage("coinCount") var coinCount = 0
@@ -71,6 +72,7 @@ struct ChoseGameMode: View {
                     .shadow(color: .red, radius: shadowRadiusArray[3])
                     .onTapGesture {
                         pvp = false
+                        coordinator.navigate(to: .game)
                     }
                 Image("p2pButton")
                     .resizable()
@@ -80,6 +82,7 @@ struct ChoseGameMode: View {
                     .shadow(color: .red, radius: shadowRadiusArray[4])
                     .onTapGesture {
                         pvp = true
+                        coordinator.navigate(to: .game)
                     }
             }
             .offset(y: screenWidth*0.05)

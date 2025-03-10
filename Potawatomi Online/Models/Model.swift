@@ -34,10 +34,22 @@ struct Lines: Equatable {
 
 struct ShopItem {
     var itemImage: String
-    var itemName: String
+    var itemText: String
+    var itemCost: Int
+}
+
+struct Rules {
+    var rulesImage: String
+    var rulesText: String
 }
 
 class Arrays {
+    
+    static var rulesArray = [
+    Rules(rulesImage: "ruleImage1", rulesText: "1. Placement Phase Players take turns placing their 9 pieces on empty intersections of the board. Creating a ''mill'' (three pieces in a straight line) allows the player to remove an opponent’s piece. Pieces in a mill cannot be removed unless all remaining opponent pieces are part of mills. Once all pieces are placed, the game transitions to the movement phase."),
+    Rules(rulesImage: "ruleImage2", rulesText: "2. Movement Phase Players take turns moving their pieces to an adjacent connected node. Forming a mill during this phase also grants the ability to remove an opponent’s piece. The game continues until one player is reduced to three pieces."),
+    Rules(rulesImage: "ruleImage3", rulesText: "3. Jumping & Endgame When a player has only three pieces left, they can move freely to any empty node. A player loses if they have fewer than three pieces or are completely blocked from making a move. The key to victory is strategic positioning, forming mills, and blocking your opponent’s moves!")
+    ]
     
     static var guidePlateArray = [
     "guideImage1",
@@ -49,11 +61,10 @@ class Arrays {
     ]
     
     static var shopItemsArray: [ShopItem] = [
-    ShopItem(itemImage: "blueThunder", itemName: "BLUE THUNDER"),
-    ShopItem(itemImage: "yellowThunder", itemName: "YELLOW THUNDER"),
-    ShopItem(itemImage: "redThunder", itemName: "RED \nTHUNDER"),
-    ShopItem(itemImage: "violetThunder", itemName: "VIOLET THUNDER"),
-    ShopItem(itemImage: "lightBlueThunder", itemName: "LIGHT BLUE \nTHUNDER")
+   ShopItem(itemImage: "shopItem1", itemText: "NEON CIRCUIT BOARD", itemCost: 1),
+   ShopItem(itemImage: "shopItem2", itemText: "MYSTIC FOREST", itemCost: 50),
+   ShopItem(itemImage: "shopItem3", itemText: "VOLCANIC LAVA", itemCost: 100),
+   ShopItem(itemImage: "shopItem4", itemText: "COSMIC GALAXY", itemCost: 200)
     ]
     
     static var loadingArray = [
@@ -65,7 +76,7 @@ class Arrays {
         ]
     
     static var rectanglesOnGameField: [[Thunder]] = [
-        [Thunder(positionX: -135, positionY: -137), Thunder(positionX: 0, positionY: -135), Thunder(positionX: 135, positionY: -135)],
+        [Thunder(positionX: -135, positionY: -135), Thunder(positionX: 0, positionY: -135), Thunder(positionX: 135, positionY: -135)],
         [Thunder(positionX: -98, positionY: -98), Thunder(positionX: 0, positionY: -98), Thunder(positionX: 98, positionY: -98)],
         [Thunder(positionX: -61, positionY: -61), Thunder(positionX: 0, positionY: -61), Thunder(positionX: 61, positionY: -61)],
         

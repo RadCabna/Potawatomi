@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Background: View {
-    var backgroundNumber = 1
+   @AppStorage("backgroundNumber") var backgroundNumber = 1
     var body: some View {
         GeometryReader { geometry in
             let height = geometry.size.height

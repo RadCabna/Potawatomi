@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Menu: View {
+    @EnvironmentObject var coordinator: Coordinator
     @AppStorage("sound") var sound = true
     @AppStorage("music") var music = true
     @AppStorage("wCount") var wCount = 0
@@ -77,6 +78,9 @@ struct Menu: View {
                     .frame(height: screenWidth*0.173)
                     .shadow(color: .red, radius: shadowRadiusArray[2])
                     .shadow(color: .red, radius: shadowRadiusArray[2])
+                    .onTapGesture {
+                        coordinator.navigate(to: .gameMode)
+                    }
                 HStack {
                     Image("rulesButton")
                         .resizable()
@@ -84,18 +88,27 @@ struct Menu: View {
                         .frame(height: screenWidth*0.125)
                         .shadow(color: .red, radius: shadowRadiusArray[3])
                         .shadow(color: .red, radius: shadowRadiusArray[3])
+                        .onTapGesture {
+                            coordinator.navigate(to: .rules)
+                        }
                     Image("shopButton")
                         .resizable()
                         .scaledToFit()
                         .frame(height: screenWidth*0.125)
                         .shadow(color: .red, radius: shadowRadiusArray[4])
                         .shadow(color: .red, radius: shadowRadiusArray[4])
+                        .onTapGesture {
+                            coordinator.navigate(to: .shop)
+                        }
                     Image("settingsButton")
                         .resizable()
                         .scaledToFit()
                         .frame(height: screenWidth*0.125)
                         .shadow(color: .red, radius: shadowRadiusArray[5])
                         .shadow(color: .red, radius: shadowRadiusArray[5])
+                        .onTapGesture {
+                            coordinator.navigate(to: .settings)
+                        }
                 }
             }
             .offset(y: screenWidth*0.04)

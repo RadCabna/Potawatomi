@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Loading: View {
+    @EnvironmentObject var coordinator: Coordinator
     @State private var loadingShadowRadius: CGFloat = 0
     @State private var loadingOpacity: CGFloat = 0
     var body: some View {
@@ -71,6 +72,9 @@ struct Loading: View {
         }
         withAnimation(Animation.easeInOut(duration: 1.5)) {
             loadingOpacity = 1
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            coordinator.navigate(to: .mainMenu)
         }
     }
     

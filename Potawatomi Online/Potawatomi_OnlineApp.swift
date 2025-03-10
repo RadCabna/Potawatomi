@@ -11,7 +11,7 @@ import SwiftUI
 struct Potawatomi_OnlineApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Game()
         }
     }
 }

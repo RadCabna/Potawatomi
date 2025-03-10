@@ -61,9 +61,9 @@ struct Game: View {
     @State private var enemyCreateLine = false
     @State private var playerOneWin = false
     @State private var playerTwoWin = false
-    @State private var youWin = false
-    @State private var youLose = false
-    @State private var pauseTapped = false
+    @State private var showWinView = false
+    @State private var showLoseView = false
+    @State private var showPause = false
     @State private var shadowRadiusArray: [CGFloat] = [0,0,0,0,0,0]
     var body: some View {
         ZStack {
@@ -75,6 +75,9 @@ struct Game: View {
                     .frame(height: screenWidth*0.06)
                     .shadow(color: .red, radius: shadowRadiusArray[0])
                     .shadow(color: .red, radius: shadowRadiusArray[0])
+                    .onTapGesture {
+                        showPause.toggle()
+                    }
                 Image(sound ? "soundOn" : "soundOff")
                     .resizable()
                     .scaledToFit()
@@ -172,7 +175,7 @@ struct Game: View {
                             if rectanglesOnGameField[row][col].strokeActive {
                                 Circle()
                                     .stroke(lineWidth: rectangleStroWidth)
-                                    .frame(width: screenWidth*0.025, height: screenWidth*0.025)
+                                    .frame(width: screenWidth*0.03, height: screenWidth*0.03)
                                     .foregroundColor(rectanglesOnGameField[row][col].strokeColor)
                                     .offset(x: rectanglesOnGameField[row][col].positionX * screenWidth/932, y: rectanglesOnGameField[row][col].positionY * screenWidth/932)
                             }
@@ -180,7 +183,9 @@ struct Game: View {
                                 Image(rectanglesOnGameField[row][col].yourThunder ? yourThunder : enemyThunder)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: screenWidth*0.015)
+                                    .frame(width: screenWidth*0.03)
+                                    .shadow(color: rectanglesOnGameField[row][col].yourThunder ? .red : .blue, radius: 3)
+                                    .shadow(color: rectanglesOnGameField[row][col].yourThunder ? .red : .blue, radius: 3)
                                     .offset(x: rectanglesOnGameField[row][col].positionX * screenWidth/932, y: rectanglesOnGameField[row][col].positionY * screenWidth/932)
                             }
                         }
@@ -195,14 +200,83 @@ struct Game: View {
                 }
             }
             .offset(y: screenWidth*0.03)
+            HStack {
+                Image("playerFrame")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: screenWidth*0.21)
+                    .shadow(color: .red, radius: shadowRadiusArray[2])
+                    .shadow(color: .red, radius: shadowRadiusArray[2])
+                    .overlay(
+                        VStack {
+                            Text(yourTurn ? "YOUR MOVE!" : "WAITING")
+                                .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
+                                .foregroundColor(.white)
+                            Text("PLAYER 1")
+                                .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
+                                .foregroundColor(.white)
+                            Spacer()
+                            LazyVGrid(columns: Array(repeating: GridItem(.fixed(screenWidth*0.030)), count: 3), spacing: screenWidth*0.001) {
+                                ForEach(0..<yourThunderCount, id: \.self) { id in
+                                    Image(yourThunder)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: screenWidth*0.028)
+                                        .padding(screenWidth*0.005)
+                                }
+                            }
+                        }
+                            .padding(.vertical, screenWidth*0.01)
+                    )
+                Spacer()
+                    .frame(width: screenWidth*0.4)
+                Image("playerFrame")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: screenWidth*0.21)
+                    .shadow(color: .red, radius: shadowRadiusArray[5])
+                    .shadow(color: .red, radius: shadowRadiusArray[5])
+                    .overlay(
+                        VStack {
+                            Text(!yourTurn ? "YOUR MOVE!" : "WAITING")
+                                .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
+                                .foregroundColor(.white)
+                            Text("PLAYER 2")
+                                .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
+                                .foregroundColor(.white)
+                            Spacer()
+                            LazyVGrid(columns: Array(repeating: GridItem(.fixed(screenWidth*0.030)), count: 3), spacing: screenWidth*0.001) {
+                                ForEach(0..<enemyThunderCount, id: \.self) { id in
+                                    Image(enemyThunder)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: screenWidth*0.028)
+                                        .padding(screenWidth*0.005)
+                                }
+                            }
+                        }
+                            .padding(.vertical, screenWidth*0.01)
+                    )
+            }
+            .offset(y: screenWidth*0.03)
+            Color.black.ignoresSafeArea().opacity(shadowOpacity)
+            if showWinView {
+                WinView(showWinView: $showWinView)
+            }
+            if showLoseView {
+                LoseView(showLoseView: $showLoseView)
+            }
+            if showPause {
+                PauseView(showPause: $showPause)
+            }
         }
         
         .onChange(of: yourThunderCountOnGameField) { _ in
             if yourThunderCount + yourThunderCountOnGameField <= 2 {
                 if pvp {
-                    playerTwoWin = true
+                    showLoseView = true
                 } else {
-                    youLose = true
+                    showLoseView = true
                 }
             }
         }
@@ -210,9 +284,9 @@ struct Game: View {
         .onChange(of: enemyThunderCountOnGameField) { _ in
             if enemyThunderCount + enemyThunderCountOnGameField <= 2 {
                 if pvp {
-                    playerOneWin = true
+                    showWinView = true
                 } else {
-                    youWin = true
+                    showWinView = true
                 }
             }
         }
@@ -310,18 +384,22 @@ struct Game: View {
             }
         }
         
-        .onChange(of: youWin) { _ in
+        .onChange(of: showWinView) { _ in
             showShadow()
-            if !youWin {
+            if !showWinView {
                 restartGame()
             }
         }
         
-        .onChange(of: youLose) { _ in
+        .onChange(of: showLoseView) { _ in
             showShadow()
-            if !youLose {
+            if !showLoseView {
                 restartGame()
             }
+        }
+        
+        .onChange(of: showPause) { _ in
+            showShadow()
         }
         
         .onChange(of: yourTurn) { _ in
@@ -331,6 +409,7 @@ struct Game: View {
         
         .onAppear {
             SoundManager.instance.stopAllSounds()
+            updateThunderSet()
         shadowAnimation()
             startTimerForRectangleStroke()
             showPosibleMoves()
@@ -351,37 +430,32 @@ struct Game: View {
     }
     
     func updateThunderSet() {
-        switch selectedThunder {
+        switch gameSet {
         case 2:
-            yourThunder = "yellowThunder"
-            enemyThunder = "redThunder"
-            linesOnGameField = Arrays.yellowLinesOnGameField
-            enemyLinesOnGameField = Arrays.redLinesOnGameField
+            yourThunder = "redCap2"
+            enemyThunder = "blueCap2"
+            linesOnGameField = Arrays.redLinesOnGameField
+            enemyLinesOnGameField = Arrays.blueLinesOnGameField
         case 3:
-            yourThunder = "redThunder"
-            enemyThunder = "blueThunder"
+            yourThunder = "redCap3"
+            enemyThunder = "blueCap3"
             linesOnGameField = Arrays.redLinesOnGameField
             enemyLinesOnGameField = Arrays.blueLinesOnGameField
         case 4:
-            yourThunder = "violetThunder"
-            enemyThunder = "redThunder"
-            linesOnGameField = Arrays.violetLinesOnGameField
-            enemyLinesOnGameField = Arrays.redLinesOnGameField
-        case 5:
-            yourThunder = "lightBlueThunder"
-            enemyThunder = "redThunder"
-            linesOnGameField = Arrays.lightBlueLinesOnGameField
-            enemyLinesOnGameField = Arrays.redLinesOnGameField
+            yourThunder = "redCap4"
+            enemyThunder = "blueCap4"
+            linesOnGameField = Arrays.redLinesOnGameField
+            enemyLinesOnGameField = Arrays.blueLinesOnGameField
         default:
-            yourThunder = "blueThunder"
-            enemyThunder = "redThunder"
-            linesOnGameField = Arrays.blueLinesOnGameField
-            enemyLinesOnGameField = Arrays.redLinesOnGameField
+            yourThunder = "redCap1"
+            enemyThunder = "blueCap1"
+            linesOnGameField = Arrays.redLinesOnGameField
+            enemyLinesOnGameField = Arrays.blueLinesOnGameField
         }
     }
     
     func showShadow() {
-        if playerOneWin || playerTwoWin || youWin || youLose || pauseTapped{
+        if playerOneWin || playerTwoWin || showWinView || showLoseView || showPause{
             withAnimation() {
                 shadowOpacity = 0.7
             }
@@ -531,7 +605,7 @@ struct Game: View {
                     clearPlate()
                     rectanglesOnGameField[row][col].isSelect = true
                     findEnableStepsForSelectedRectangle()
-                    rectangleStroWidth = 5
+                    rectangleStroWidth = 7
                 }
                 if  !rectanglesOnGameField[row][col].haveThunder && rectanglesOnGameField[row][col].strokeActive {
                     rectanglesOnGameField[row][col].haveThunder.toggle()
@@ -546,7 +620,7 @@ struct Game: View {
                     stopWaitingEnamyTimer()
                 }
             }
-            if !yourTurn && enemyStageNumber == 3 && !youWin{
+            if !yourTurn && enemyStageNumber == 3 && !showWinView{
                 stopWaitingEnamyTimer()
                 enemyWaitYourSteps = Timer.scheduledTimer(withTimeInterval: TimeInterval(2.5), repeats: true) { _ in
                     print("stage3TimerStart")
@@ -554,7 +628,7 @@ struct Game: View {
                         stopWaitingEnamyTimer()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             updateBotStepsForStageThree_1()
-                            rectangleStroWidth = 5
+                            rectangleStroWidth = 7
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             if enemyCanMakeStep {
@@ -651,7 +725,7 @@ struct Game: View {
                     clearPlate()
                     rectanglesOnGameField[row][col].isSelect = true
                     findEnableStepsForSelectedRectangle()
-                    rectangleStroWidth = 5
+                    rectangleStroWidth = 7
                 }
                 if  !rectanglesOnGameField[row][col].haveThunder && rectanglesOnGameField[row][col].strokeActive {
                     rectanglesOnGameField[row][col].haveThunder.toggle()
@@ -671,7 +745,7 @@ struct Game: View {
                     clearPlate()
                     rectanglesOnGameField[row][col].isSelect = true
                     findEnableStepsForSelectedRectangle()
-                    rectangleStroWidth = 5
+                    rectangleStroWidth = 7
                 }
                 if  !rectanglesOnGameField[row][col].haveThunder && rectanglesOnGameField[row][col].strokeActive {
                     rectanglesOnGameField[row][col].haveThunder.toggle()
@@ -689,6 +763,7 @@ struct Game: View {
     }
     
     func restartGame() {
+        yourTurn = true
         yourStageNumber = 1
         enemyStageNumber = 1
         yourThunderCount = 9
@@ -728,43 +803,43 @@ struct Game: View {
         for i in 0..<rectanglesOnGameField.count {
             for j in 0..<rectanglesOnGameField[i].count {
                 if ((
-                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) > 25 &&
-                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) < 35 &&
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) > 34 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) < 40 &&
                      (rectanglesOnGameField[i][j].positionY == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY))
                     ||
                     
-                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) > 25 &&
-                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) < 35 &&
+                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) > 34 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) < 40 &&
                      (rectanglesOnGameField[i][j].positionX == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX))
                     ||
                     
-                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) > 63 &&
-                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) < 70 &&
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) > 58 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) < 64 &&
                      (rectanglesOnGameField[i][j].positionY == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY))
                     ||
                     
-                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) > 63 &&
-                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) < 70 &&
+                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) > 58 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) < 64 &&
                      (rectanglesOnGameField[i][j].positionX == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX))
                     ||
                     
-                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) > 94 &&
-                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) < 100 &&
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) > 95 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) < 101 &&
                      (rectanglesOnGameField[i][j].positionY == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY))
                     ||
                     
-                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) > 94 &&
-                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) < 100 &&
+                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) > 95 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) < 101 &&
                      (rectanglesOnGameField[i][j].positionX == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX))
                     ||
                     
-                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) > 124 &&
-                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) < 131 &&
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) > 131 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) < 138 &&
                      (rectanglesOnGameField[i][j].positionY == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY))
                     ||
                     
-                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) > 124 &&
-                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) < 131 &&
+                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) > 131 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) < 138 &&
                      (rectanglesOnGameField[i][j].positionX == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX))
                 ))
                     &&
