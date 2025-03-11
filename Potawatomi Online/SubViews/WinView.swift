@@ -47,6 +47,7 @@ struct WinView: View {
                         .shadow(color: .red, radius: 3)
                         .shadow(color: .red, radius: 3)
                         .onTapGesture {
+                            coinCount += 10
                             wCount += 1
                             showWinView.toggle()
                         }
@@ -57,6 +58,7 @@ struct WinView: View {
                         .shadow(color: .red, radius: 3)
                         .shadow(color: .red, radius: 3)
                         .onTapGesture {
+                            coinCount += 10
                             wCount += 1
                             coordinator.navigate(to: .mainMenu)
                         }
