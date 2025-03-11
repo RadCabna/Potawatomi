@@ -14,6 +14,7 @@ struct Settings: View {
     @AppStorage("music") var music = true
     @AppStorage("coinCount") var coinCount = 0
     @State private var shadowRadiusArray: [CGFloat] = [0,0,0,0,0,0]
+    @Binding var showSettings: Bool
     var body: some View {
         ZStack {
             Background()
@@ -25,7 +26,7 @@ struct Settings: View {
                     .shadow(color: .red, radius: shadowRadiusArray[0])
                     .shadow(color: .red, radius: shadowRadiusArray[0])
                     .onTapGesture {
-                        coordinator.navigateBack()
+                        showSettings.toggle()
                     }
                 Spacer()
                 Image("coinImageFrame")
@@ -99,6 +100,9 @@ struct Settings: View {
                         )
                         .shadow(color: .red, radius: shadowRadiusArray[3])
                         .shadow(color: .red, radius: shadowRadiusArray[3])
+                        .onTapGesture {
+                            openAppStoreForRating()
+                        }
                     Image("blackButton")
                         .resizable()
                         .scaledToFit()
@@ -110,6 +114,9 @@ struct Settings: View {
                         )
                         .shadow(color: .red, radius: shadowRadiusArray[4])
                         .shadow(color: .red, radius: shadowRadiusArray[4])
+                        .onTapGesture {
+                            shareApp()
+                        }
                 }
                 .padding(.top)
             }
@@ -134,11 +141,37 @@ struct Settings: View {
         }
     }
     
+    func shareApp() {
+            guard let url = URL(string: "https://apps.apple.com/app/id6743117540") else {
+                return
+            }
+
+            let activityViewController = UIActivityViewController(
+                activityItems: [url],
+                applicationActivities: nil
+            )
+
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootViewController = windowScene.windows.first?.rootViewController {
+                rootViewController.present(activityViewController, animated: true, completion: nil)
+            }
+        }
+    
+    func openAppStoreForRating() {
+        guard let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id6743117540?action=write-review") else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(appStoreURL) {
+            UIApplication.shared.open(appStoreURL)
+        }
+    }
+    
 }
 
 #Preview {
-    Settings()
+    Settings(showSettings: .constant(true))
 }
+
 
 struct CustomToggle: ToggleStyle {
     var screenHeight = UIScreen.main.bounds.height
@@ -159,21 +192,6 @@ struct CustomToggle: ToggleStyle {
                     .frame(height: screenWidth*0.028)
                     .offset(x: configuration.isOn ? screenWidth * 0.038 : -screenWidth * 0.038)
                     .animation(.easeInOut(duration: 0.2), value: configuration.isOn)
-//                RoundedRectangle(cornerRadius: screenHeight * 0.015)
-//                    .fill(configuration.isOn ? Color.toggleon : Color.toggleoff)
-//                    .frame(width: screenWidth * 0.07, height: screenWidth * 0.03)
-//                    .shadow(radius: 1, y: 0)
-//                    .offset(x: configuration.isOn ? screenWidth * 0.034 : -screenWidth * 0.034)
-//                    .animation(.easeInOut(duration: 0.2), value: configuration.isOn)
-//                    .overlay(
-//                        RoundedRectangle(cornerRadius: screenHeight * 0.015)
-//                            .stroke(lineWidth: 1)
-//                            .frame(width: screenWidth * 0.07, height: screenWidth * 0.032)
-//                            .foregroundColor(.white)
-//                            .offset(x: configuration.isOn ? screenWidth * 0.034 : -screenWidth * 0.034)
-//                            .animation(.easeInOut(duration: 0.2), value: configuration.isOn)
-//                    )
-               
             }
         }
         .onTapGesture {

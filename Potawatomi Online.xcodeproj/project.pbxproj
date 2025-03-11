@@ -26,6 +26,12 @@
 		DD75F0EB2D7F60B200C1A4D5 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0EA2D7F60B200C1A4D5 /* Shop.swift */; };
 		DD75F0ED2D7F935C00C1A4D5 /* HowToPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0EC2D7F935C00C1A4D5 /* HowToPlay.swift */; };
 		DD75F0EF2D7F9A1800C1A4D5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0EE2D7F9A1800C1A4D5 /* Settings.swift */; };
+		DD75F0F12D80466900C1A4D5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0F02D80466900C1A4D5 /* Controller.swift */; };
+		DD75F0F42D80519200C1A4D5 /* musicMain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD75F0F32D80519200C1A4D5 /* musicMain.mp3 */; };
+		DD75F0F62D80522F00C1A4D5 /* lineSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD75F0F52D80522F00C1A4D5 /* lineSound.mp3 */; };
+		DD75F0F92D8052C900C1A4D5 /* failSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD75F0F72D8052C900C1A4D5 /* failSound.mp3 */; };
+		DD75F0FA2D8052C900C1A4D5 /* winSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD75F0F82D8052C900C1A4D5 /* winSound.mp3 */; };
+		DD75F0FC2D80535A00C1A4D5 /* tapSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD75F0FB2D80535A00C1A4D5 /* tapSound1.mp3 */; };
 		DDEF9BF02D7A119B00108ECF /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF9BEF2D7A119B00108ECF /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +58,13 @@
 		DD75F0EA2D7F60B200C1A4D5 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		DD75F0EC2D7F935C00C1A4D5 /* HowToPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlay.swift; sourceTree = "<group>"; };
 		DD75F0EE2D7F9A1800C1A4D5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		DD75F0F02D80466900C1A4D5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		DD75F0F22D8046CE00C1A4D5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		DD75F0F32D80519200C1A4D5 /* musicMain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = musicMain.mp3; sourceTree = "<group>"; };
+		DD75F0F52D80522F00C1A4D5 /* lineSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lineSound.mp3; sourceTree = "<group>"; };
+		DD75F0F72D8052C900C1A4D5 /* failSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = failSound.mp3; sourceTree = "<group>"; };
+		DD75F0F82D8052C900C1A4D5 /* winSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = winSound.mp3; sourceTree = "<group>"; };
+		DD75F0FB2D80535A00C1A4D5 /* tapSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tapSound1.mp3; sourceTree = "<group>"; };
 		DDEF9BEF2D7A119B00108ECF /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +82,7 @@
 		DD0CAA5B2D78D75E00F083CB = {
 			isa = PBXGroup;
 			children = (
+				DD75F0F22D8046CE00C1A4D5 /* PrivacyInfo.xcprivacy */,
 				DD0CAA662D78D75E00F083CB /* Potawatomi Online */,
 				DD0CAA652D78D75E00F083CB /* Products */,
 			);
@@ -112,6 +126,11 @@
 		DD0CAA762D78DAEF00F083CB /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				DD75F0FB2D80535A00C1A4D5 /* tapSound1.mp3 */,
+				DD75F0F72D8052C900C1A4D5 /* failSound.mp3 */,
+				DD75F0F82D8052C900C1A4D5 /* winSound.mp3 */,
+				DD75F0F52D80522F00C1A4D5 /* lineSound.mp3 */,
+				DD75F0F32D80519200C1A4D5 /* musicMain.mp3 */,
 				DDEF9BEF2D7A119B00108ECF /* SoundManager.swift */,
 			);
 			path = Sounds;
@@ -160,6 +179,7 @@
 				DD75F0EA2D7F60B200C1A4D5 /* Shop.swift */,
 				DD75F0EC2D7F935C00C1A4D5 /* HowToPlay.swift */,
 				DD75F0EE2D7F9A1800C1A4D5 /* Settings.swift */,
+				DD75F0F02D80466900C1A4D5 /* Controller.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -233,8 +253,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD75F0FC2D80535A00C1A4D5 /* tapSound1.mp3 in Resources */,
 				DD0CAA702D78D75F00F083CB /* Preview Assets.xcassets in Resources */,
+				DD75F0F42D80519200C1A4D5 /* musicMain.mp3 in Resources */,
+				DD75F0FA2D8052C900C1A4D5 /* winSound.mp3 in Resources */,
+				DD75F0F62D80522F00C1A4D5 /* lineSound.mp3 in Resources */,
 				DD0CAA8E2D78E17500F083CB /* PassionOne-Regular.ttf in Resources */,
+				DD75F0F92D8052C900C1A4D5 /* failSound.mp3 in Resources */,
 				DD0CAA6C2D78D75F00F083CB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +280,7 @@
 				DD0CAA912D78EDAE00F083CB /* ChoseGameMode.swift in Sources */,
 				DD0CAA822D78DF3700F083CB /* ColorExtention.swift in Sources */,
 				DD0CAA842D78E02200F083CB /* Model.swift in Sources */,
+				DD75F0F12D80466900C1A4D5 /* Controller.swift in Sources */,
 				DD0CAA862D78E06600F083CB /* Loading.swift in Sources */,
 				DD0CAA7E2D78DF1400F083CB /* Background.swift in Sources */,
 				DD0CAA802D78DF2900F083CB /* SizeExtention.swift in Sources */,
@@ -392,7 +418,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Potawatomi Online/Preview Content\"";
-				DEVELOPMENT_TEAM = TJC4VDAK2F;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -403,16 +429,16 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "f1.Potawatomi-Online";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ptwtmonline.game;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -432,7 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Potawatomi Online/Preview Content\"";
-				DEVELOPMENT_TEAM = TJC4VDAK2F;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -443,16 +469,16 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "f1.Potawatomi-Online";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ptwtmonline.game;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -12,6 +12,7 @@ struct WinView: View {
     @AppStorage("coinCount") var coinCount = 0
     @AppStorage("wCount") var wCount = 0
     @AppStorage("lCount") var lCount = 0
+    @AppStorage("sound") var sound = true
     @Binding var showWinView: Bool
     var body: some View {
         Image("winFrame")
@@ -62,7 +63,11 @@ struct WinView: View {
                 }
                     .offset(y: screenWidth*0.05)
             )
-        
+            .onAppear {
+                if sound {
+                    SoundManager.instance.playSound(sound: "winSound")
+                }
+            }
     }
 }
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Loading: View {
     @EnvironmentObject var coordinator: Coordinator
+    @AppStorage("levelInfo") var level = false
     @State private var loadingShadowRadius: CGFloat = 0
     @State private var loadingOpacity: CGFloat = 0
     var body: some View {
@@ -63,6 +64,14 @@ struct Loading: View {
             changeLogoShadowRadiusAnimation()
         }
         
+        .onChange(of: level) { _ in
+            if level {
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    coordinator.navigate(to: .mainMenu)
+                }
+            }
+        }
+        
     }
     
     func changeLogoShadowRadiusAnimation() {
@@ -73,9 +82,7 @@ struct Loading: View {
         withAnimation(Animation.easeInOut(duration: 1.5)) {
             loadingOpacity = 1
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            coordinator.navigate(to: .mainMenu)
-        }
+       
     }
     
 }

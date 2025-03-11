@@ -15,6 +15,7 @@ struct HowToPlay: View {
     @State private var shadowRadiusArray: [CGFloat] = [0,0,0,0,0,0]
     @State private var rulesArray = Arrays.rulesArray
     @State private var rulesNumber = 0
+    @Binding var showHowTo: Bool
     var body: some View {
         ZStack {
             Background()
@@ -26,7 +27,7 @@ struct HowToPlay: View {
                     .shadow(color: .red, radius: shadowRadiusArray[0])
                     .shadow(color: .red, radius: shadowRadiusArray[0])
                     .onTapGesture {
-                        coordinator.navigateBack()
+                        showHowTo.toggle()
                     }
                 Image(sound ? "soundOn" : "soundOff")
                     .resizable()
@@ -158,5 +159,5 @@ struct HowToPlay: View {
 }
 
 #Preview {
-    HowToPlay()
+    HowToPlay(showHowTo: .constant(true))
 }

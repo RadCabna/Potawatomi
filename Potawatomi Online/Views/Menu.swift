@@ -15,6 +15,10 @@ struct Menu: View {
     @AppStorage("lCount") var lCount = 0
     @AppStorage("coinCount") var coinCount = 0
     @State private var shadowRadiusArray: [CGFloat] = [0,0,0,0,0,0]
+    @State private var showChoseGame = false
+    @State private var showHowTo = false
+    @State private var showShop = false
+    @State private var showSettings = false
     var body: some View {
         ZStack {
             Background()
@@ -79,7 +83,7 @@ struct Menu: View {
                     .shadow(color: .red, radius: shadowRadiusArray[2])
                     .shadow(color: .red, radius: shadowRadiusArray[2])
                     .onTapGesture {
-                        coordinator.navigate(to: .gameMode)
+                        showChoseGame.toggle()
                     }
                 HStack {
                     Image("rulesButton")
@@ -89,7 +93,7 @@ struct Menu: View {
                         .shadow(color: .red, radius: shadowRadiusArray[3])
                         .shadow(color: .red, radius: shadowRadiusArray[3])
                         .onTapGesture {
-                            coordinator.navigate(to: .rules)
+                            showHowTo.toggle()
                         }
                     Image("shopButton")
                         .resizable()
@@ -98,7 +102,7 @@ struct Menu: View {
                         .shadow(color: .red, radius: shadowRadiusArray[4])
                         .shadow(color: .red, radius: shadowRadiusArray[4])
                         .onTapGesture {
-                            coordinator.navigate(to: .shop)
+                            showShop.toggle()
                         }
                     Image("settingsButton")
                         .resizable()
@@ -107,15 +111,39 @@ struct Menu: View {
                         .shadow(color: .red, radius: shadowRadiusArray[5])
                         .shadow(color: .red, radius: shadowRadiusArray[5])
                         .onTapGesture {
-                            coordinator.navigate(to: .settings)
+                            showSettings.toggle()
                         }
                 }
             }
             .offset(y: screenWidth*0.04)
+            if showChoseGame {
+                ChoseGameMode(showChoseGame: $showChoseGame)
+            }
+            if showHowTo {
+                HowToPlay(showHowTo: $showHowTo)
+            }
+            if showShop {
+                Shop(showShop: $showShop)
+            }
+            if showSettings {
+                Settings(showSettings: $showSettings)
+            }
         }
         
         .onAppear {
             shadowAnimation()
+            if music {
+                SoundManager.instance.playSound(sound: "musicMain")
+            }
+        }
+        
+        .onChange(of: music) { _ in
+            if !music {
+                SoundManager.instance.stopAllSounds()
+            } else {
+                SoundManager.instance.stopAllSounds()
+                SoundManager.instance.playSound(sound: "musicMain")
+            }
         }
         
     }

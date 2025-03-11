@@ -14,6 +14,7 @@ struct ChoseGameMode: View {
     @AppStorage("coinCount") var coinCount = 0
     @AppStorage("pvp") var pvp = true
     @State private var shadowRadiusArray: [CGFloat] = [0,0,0,0,0,0]
+    @Binding var showChoseGame: Bool
     var body: some View {
         ZStack {
             Background()
@@ -24,6 +25,9 @@ struct ChoseGameMode: View {
                     .frame(height: screenWidth*0.06)
                     .shadow(color: .red, radius: shadowRadiusArray[0])
                     .shadow(color: .red, radius: shadowRadiusArray[0])
+                    .onTapGesture {
+                        showChoseGame.toggle()
+                    }
                 Image(sound ? "soundOn" : "soundOff")
                     .resizable()
                     .scaledToFit()
@@ -107,5 +111,5 @@ struct ChoseGameMode: View {
 }
 
 #Preview {
-    ChoseGameMode()
+    ChoseGameMode(showChoseGame: .constant(true))
 }

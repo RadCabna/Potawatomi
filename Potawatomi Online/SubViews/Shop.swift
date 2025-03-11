@@ -16,6 +16,7 @@ struct Shop: View {
     @State private var shopItemsData = UserDefaults.standard.array(forKey: "shopItemsData") as? [Int] ?? [2,0,0,0]
     @State private var shopItemsArray = Arrays.shopItemsArray
     @State private var shadowRadiusArray: [CGFloat] = [0,0,0,0,0,0]
+    @Binding var showShop: Bool
     var body: some View {
         ZStack {
             Background()
@@ -27,7 +28,7 @@ struct Shop: View {
                     .shadow(color: .red, radius: shadowRadiusArray[0])
                     .shadow(color: .red, radius: shadowRadiusArray[0])
                     .onTapGesture {
-                        coordinator.navigateBack()
+                        showShop.toggle()
                     }
                 Image(sound ? "soundOn" : "soundOff")
                     .resizable()
@@ -190,5 +191,5 @@ struct Shop: View {
 }
 
 #Preview {
-    Shop()
+    Shop(showShop: .constant(true))
 }

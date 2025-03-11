@@ -11,6 +11,7 @@ struct LoseView: View {
     @EnvironmentObject var coordinator: Coordinator
     @AppStorage("wCount") var wCount = 0
     @AppStorage("lCount") var lCount = 0
+    @AppStorage("sound") var sound = true
     @Binding var showLoseView: Bool
     var body: some View {
         Image("loseFrame")
@@ -42,6 +43,11 @@ struct LoseView: View {
                 }
                     .offset(y: screenWidth*0.055)
             )
+            .onAppear {
+                if sound {
+                    SoundManager.instance.playSound(sound: "failSound")
+                }
+            }
     }
 }
 
