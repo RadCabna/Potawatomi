@@ -118,58 +118,58 @@ struct Game: View {
             .frame(maxHeight: .infinity, alignment: .top)
             .padding()
             ZStack {
-                Image("gameField1")
+                Image("gameField3")
                     .resizable()
                     .scaledToFit()
                     .frame(width: screenWidth*0.38)
-                    .scaleEffect(y: 1.03)
+                    .scaleEffect(y: 1.0)
                 Image("playingFieldNoRectangles")
                     .resizable()
                     .scaledToFit()
                     .frame(width: screenWidth*0.28)
-                ZStack {
-                    ForEach(0..<linesOnGameField.count, id: \.self) { row in
-                        ForEach(0..<linesOnGameField[row].count, id: \.self) { col in
-                            if linesOnGameField[row][col].lineActive {
-                                Image(linesOnGameField[row][col].itemName)
-                                    .frame(maxWidth: screenWidth*0.3, maxHeight: screenHeight*0.04)
-                                    .scaleEffect(x: screenWidth/932, y: screenWidth/932)
-                                    .scaleEffect(x: 0.45, y: 0.45)
-                                    .shadow(color: linesOnGameField[row][col].itemName.hasPrefix("red") ? .red : .blue, radius: 5)
-                                    .shadow(color: linesOnGameField[row][col].itemName.hasPrefix("red") ? .red : .blue, radius: 5)
-                                    .offset(
-                                        x: linesOnGameField[row][col].positionX * screenWidth/932,
-                                        y: linesOnGameField[row][col].positionY * screenWidth/932
-                                    )
-                            }
-                        }
-                    }
-                }
-                ZStack {
-                    ForEach(0..<enemyLinesOnGameField.count, id: \.self) { row in
-                        ForEach(0..<enemyLinesOnGameField[row].count, id: \.self) { col in
-                            if enemyLinesOnGameField[row][col].lineActive {
-                                Image(enemyLinesOnGameField[row][col].itemName)
-                                    .frame(maxWidth: screenWidth*0.3, maxHeight: screenHeight*0.04)
-                                    .scaleEffect(x: screenWidth/932, y: screenWidth/932)
-                                    .scaleEffect(x: 0.45, y: 0.45)
-                                    .shadow(color: enemyLinesOnGameField[row][col].itemName.hasPrefix("red") ? .red : .blue, radius: 5)
-                                    .shadow(color: enemyLinesOnGameField[row][col].itemName.hasPrefix("red") ? .red : .blue, radius: 5)
-                                    .offset(
-                                        x: linesOnGameField[row][col].positionX * screenWidth/932,
-                                        y: linesOnGameField[row][col].positionY * screenWidth/932
-                                    )
-                            }
-                        }
-                    }
-                }
+//                ZStack {
+//                    ForEach(0..<linesOnGameField.count, id: \.self) { row in
+//                        ForEach(0..<linesOnGameField[row].count, id: \.self) { col in
+//                            if linesOnGameField[row][col].lineActive {
+//                                Image(linesOnGameField[row][col].itemName)
+//                                    .frame(maxWidth: screenWidth*0.3, maxHeight: screenHeight*0.04)
+//                                    .scaleEffect(x: screenWidth/932, y: screenWidth/932)
+//                                    .scaleEffect(x: 0.45, y: 0.45)
+//                                    .shadow(color: linesOnGameField[row][col].itemName.hasPrefix("red") ? .red : .blue, radius: 5)
+//                                    .shadow(color: linesOnGameField[row][col].itemName.hasPrefix("red") ? .red : .blue, radius: 5)
+//                                    .offset(
+//                                        x: linesOnGameField[row][col].positionX * screenWidth/932,
+//                                        y: linesOnGameField[row][col].positionY * screenWidth/932
+//                                    )
+//                            }
+//                        }
+//                    }
+//                }
+//                ZStack {
+//                    ForEach(0..<enemyLinesOnGameField.count, id: \.self) { row in
+//                        ForEach(0..<enemyLinesOnGameField[row].count, id: \.self) { col in
+//                            if !enemyLinesOnGameField[row][col].lineActive {
+//                                Image(enemyLinesOnGameField[row][col].itemName)
+//                                    .frame(maxWidth: screenWidth*0.3, maxHeight: screenHeight*0.04)
+//                                    .scaleEffect(x: screenWidth/932, y: screenWidth/932)
+//                                    .scaleEffect(x: 0.45, y: 0.45)
+//                                    .shadow(color: enemyLinesOnGameField[row][col].itemName.hasPrefix("red") ? .red : .blue, radius: 5)
+//                                    .shadow(color: enemyLinesOnGameField[row][col].itemName.hasPrefix("red") ? .red : .blue, radius: 5)
+//                                    .offset(
+//                                        x: linesOnGameField[row][col].positionX * screenWidth/932,
+//                                        y: linesOnGameField[row][col].positionY * screenWidth/932
+//                                    )
+//                            }
+//                        }
+//                    }
+//                }
                 
                 ForEach(0..<rectanglesOnGameField.count, id: \.self) { row in
                     ForEach(0..<rectanglesOnGameField[row].count, id: \.self) { col in
                         ZStack {
 //                            Image("dot")
                             Circle()
-                                .frame(width: screenWidth*0.02, height: screenWidth*0.02)
+                                .frame(width: screenWidth*0.015, height: screenWidth*0.015)
                                 .foregroundColor(.white)
                                 .offset(x: rectanglesOnGameField[row][col].positionX * screenWidth/932, y: rectanglesOnGameField[row][col].positionY * screenWidth/932)
                             if rectanglesOnGameField[row][col].strokeActive {
@@ -803,13 +803,55 @@ struct Game: View {
         for i in 0..<rectanglesOnGameField.count {
             for j in 0..<rectanglesOnGameField[i].count {
                 if ((
-                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) > 34 &&
-                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) < 40 &&
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) >= 22 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) <= 26 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) <= 26 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) >= 22
+                    )
+                    ||
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) >= 43 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) <= 47 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) <= 108 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) >= 104
+                    )
+                    ||
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) >= 104 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) <= 108 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) <= 47 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) >= 43
+                    )
+                    ||
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) >= 32 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) <= 36 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) <= 84 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) >= 80
+                    )
+                    ||
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) >= 80 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) <= 84 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) <= 36 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) >= 32
+                    )
+                    ||
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) >= 22 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) <= 26 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) <= 60 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) >= 56
+                    )
+                    ||
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) >= 56 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) <= 60 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) <= 26 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) >= 22
+                    )
+                    ||
+                    (abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) >= 34 &&
+                     abs(rectanglesOnGameField[i][j].positionX - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX) <= 38 &&
                      (rectanglesOnGameField[i][j].positionY == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY))
                     ||
                     
-                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) > 34 &&
-                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) < 40 &&
+                    (abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) >= 34 &&
+                     abs(rectanglesOnGameField[i][j].positionY - rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionY) <= 38 &&
                      (rectanglesOnGameField[i][j].positionX == rectanglesOnGameField[selectedRectangleRow][selectedRectangleCol].positionX))
                     ||
                     
@@ -1014,6 +1056,10 @@ struct Game: View {
         checkLineMethod(name: "checkBottomHorizontalLine3", rx1: 7, ry1: 0, rx2: 7, ry2: 1, rx3: 7, ry3: 2, lx1: 4, ly1: 0)
         checkLineMethod(name: "checkMiddleLeftLine", rx1: 3, ry1: 0, rx2: 3, ry2: 1, rx3: 3, ry3: 2, lx1: 5, ly1: 0)
         checkLineMethod(name: "checkMiddleRightLine", rx1: 4, ry1: 0, rx2: 4, ry2: 1, rx3: 4, ry3: 2, lx1: 5, ly1: 1)
+        checkLineMethod(name: "checkDiagonal1", rx1: 0, ry1: 0, rx2: 1, ry2: 0, rx3: 2, ry3: 0, lx1: 7, ly1: 0)
+        checkLineMethod(name: "checkDiagonal2", rx1: 0, ry1: 2, rx2: 1, ry2: 2, rx3: 2, ry3: 2, lx1: 7, ly1: 1)
+        checkLineMethod(name: "checkDiagonal3", rx1: 7, ry1: 0, rx2: 6, ry2: 0, rx3: 5, ry3: 0, lx1: 6, ly1: 0)
+        checkLineMethod(name: "checkDiagonal4", rx1: 5, ry1: 2, rx2: 6, ry2: 2, rx3: 7, ry3: 2, lx1: 6, ly1: 1)
     }
     
     func checkLineMethod(name: String, rx1: Int, ry1: Int, rx2: Int, ry2: Int, rx3: Int, ry3: Int, lx1: Int, ly1: Int) {

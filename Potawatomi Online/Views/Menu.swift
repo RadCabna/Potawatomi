@@ -19,6 +19,12 @@ struct Menu: View {
     @State private var showHowTo = false
     @State private var showShop = false
     @State private var showSettings = false
+    @State private var showBonuses = false
+    @State private var remainingTime: TimeInterval = 24 * 60 * 60
+    @State private var isButtonActive = false
+    @State private var timer: Timer?
+    private let savedRemainingTimeKey = "savedRemainingTime"
+    private let lastSaveTimestampKey = "lastSaveTimestamp"
     var body: some View {
         ZStack {
             Background()
@@ -49,9 +55,9 @@ struct Menu: View {
                     .shadow(color: .red, radius: shadowRadiusArray[2])
                     .shadow(color: .red, radius: shadowRadiusArray[2])
                     .overlay(
-                    Text("W&L \(wCount) - \(lCount)")
-                        .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
-                        .foregroundColor(.white)
+                        Text("W&L \(wCount) - \(lCount)")
+                            .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
+                            .foregroundColor(.white)
                     )
                     .padding(.leading, screenWidth*0.1)
                 Spacer()
@@ -68,9 +74,9 @@ struct Menu: View {
                     .shadow(color: .red, radius: shadowRadiusArray[4])
                     .shadow(color: .red, radius: shadowRadiusArray[4])
                     .overlay(
-                    Text("\(coinCount)")
-                        .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
-                        .foregroundColor(.white)
+                        Text("\(coinCount)")
+                            .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
+                            .foregroundColor(.white)
                     )
             }
             .frame(maxHeight: .infinity, alignment: .top)
@@ -104,6 +110,31 @@ struct Menu: View {
                         .onTapGesture {
                             showShop.toggle()
                         }
+                    Image("bonusButton")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: screenWidth*0.125)
+                        .shadow(color: .red, radius: shadowRadiusArray[4])
+                        .shadow(color: .red, radius: shadowRadiusArray[4])
+                        .overlay(
+                            ZStack {
+                                if isButtonActive {
+                                    Text("OPEN")
+                                        .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
+                                        .foregroundColor(.white)
+                                } else {
+                                    Text(buttonText)
+                                        .font(Font.custom("PassionOne-Regular", size: screenWidth*0.03))
+                                        .foregroundColor(.white)
+                                }
+                            }
+                                .offset(y: screenWidth*0.02)
+                        )
+                        .onTapGesture {
+                            showBonuses.toggle()
+                            resetTimer()
+                        }
+                        .disabled(!isButtonActive)
                     Image("settingsButton")
                         .resizable()
                         .scaledToFit()
@@ -128,14 +159,21 @@ struct Menu: View {
             if showSettings {
                 Settings(showSettings: $showSettings)
             }
+            if showBonuses {
+                BonusView(showBonus: $showBonuses)
+            }
         }
         
         .onAppear {
+            loadTimerState()
             shadowAnimation()
             if music {
                 SoundManager.instance.playSound(sound: "musicMain")
             }
         }
+        .onDisappear {
+                    saveTimerState()
+                }
         
         .onChange(of: music) { _ in
             if !music {
@@ -146,6 +184,62 @@ struct Menu: View {
             }
         }
         
+    }
+    
+    private func loadTimerState() {
+        let savedRemainingTime = UserDefaults.standard.double(forKey: savedRemainingTimeKey)
+        let lastSaveTimestamp = UserDefaults.standard.double(forKey: lastSaveTimestampKey)
+        
+        if savedRemainingTime > 0 {
+            let currentTime = Date().timeIntervalSince1970
+            let timePassed = currentTime - lastSaveTimestamp
+            
+            remainingTime = max(savedRemainingTime - timePassed, 0)
+            
+            if remainingTime <= 0 {
+                isButtonActive = true
+                return
+            }
+        }
+        
+        startTimer()
+    }
+    
+    private var buttonText: String {
+            if isButtonActive {
+                return "MENU"
+            } else {
+                let hours = Int(remainingTime) / 3600
+                let minutes = (Int(remainingTime) % 3600) / 60
+                let seconds = Int(remainingTime) % 60
+                return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+            }
+        }
+    
+    private func startTimer() {
+        timer?.invalidate()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            if remainingTime > 0 {
+                remainingTime -= 1
+            } else {
+                timer?.invalidate()
+                isButtonActive = true
+            }
+        }
+    }
+    
+    private func resetTimer() {
+        isButtonActive = false
+        remainingTime = 24 * 60 * 60
+        startTimer()
+    }
+    
+    private func saveTimerState() {
+        UserDefaults.standard.set(remainingTime, forKey: savedRemainingTimeKey)
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: lastSaveTimestampKey)
+        
+        timer?.invalidate()
     }
     
     func shadowAnimation() {

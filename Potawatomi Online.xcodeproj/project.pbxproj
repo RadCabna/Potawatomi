@@ -20,6 +20,9 @@
 		DD0CAA8C2D78E0A000F083CB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA8B2D78E0A000F083CB /* Coordinator.swift */; };
 		DD0CAA8E2D78E17500F083CB /* PassionOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD0CAA8D2D78E17500F083CB /* PassionOne-Regular.ttf */; };
 		DD0CAA912D78EDAE00F083CB /* ChoseGameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAA902D78EDAE00F083CB /* ChoseGameMode.swift */; };
+		DD1FE6642DA3D3B600CFA58F /* BonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1FE6632DA3D3B600CFA58F /* BonusView.swift */; };
+		DD1FE6672DA4367B00CFA58F /* bonusWinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD1FE6652DA4367B00CFA58F /* bonusWinSound.mp3 */; };
+		DD1FE6682DA4367B00CFA58F /* chestOpenSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD1FE6662DA4367B00CFA58F /* chestOpenSound.mp3 */; };
 		DD75F0E52D7F488900C1A4D5 /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0E42D7F488900C1A4D5 /* WinView.swift */; };
 		DD75F0E72D7F4A6700C1A4D5 /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0E62D7F4A6700C1A4D5 /* LoseView.swift */; };
 		DD75F0E92D7F4B4900C1A4D5 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD75F0E82D7F4B4900C1A4D5 /* PauseView.swift */; };
@@ -52,6 +55,9 @@
 		DD0CAA8D2D78E17500F083CB /* PassionOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PassionOne-Regular.ttf"; sourceTree = "<group>"; };
 		DD0CAA8F2D78E18200F083CB /* Potawatomi-Online-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Potawatomi-Online-Info.plist"; sourceTree = SOURCE_ROOT; };
 		DD0CAA902D78EDAE00F083CB /* ChoseGameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseGameMode.swift; sourceTree = "<group>"; };
+		DD1FE6632DA3D3B600CFA58F /* BonusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusView.swift; sourceTree = "<group>"; };
+		DD1FE6652DA4367B00CFA58F /* bonusWinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bonusWinSound.mp3; sourceTree = "<group>"; };
+		DD1FE6662DA4367B00CFA58F /* chestOpenSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chestOpenSound.mp3; sourceTree = "<group>"; };
 		DD75F0E42D7F488900C1A4D5 /* WinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
 		DD75F0E62D7F4A6700C1A4D5 /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
 		DD75F0E82D7F4B4900C1A4D5 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
@@ -126,6 +132,8 @@
 		DD0CAA762D78DAEF00F083CB /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				DD1FE6652DA4367B00CFA58F /* bonusWinSound.mp3 */,
+				DD1FE6662DA4367B00CFA58F /* chestOpenSound.mp3 */,
 				DD75F0FB2D80535A00C1A4D5 /* tapSound1.mp3 */,
 				DD75F0F72D8052C900C1A4D5 /* failSound.mp3 */,
 				DD75F0F82D8052C900C1A4D5 /* winSound.mp3 */,
@@ -180,6 +188,7 @@
 				DD75F0EC2D7F935C00C1A4D5 /* HowToPlay.swift */,
 				DD75F0EE2D7F9A1800C1A4D5 /* Settings.swift */,
 				DD75F0F02D80466900C1A4D5 /* Controller.swift */,
+				DD1FE6632DA3D3B600CFA58F /* BonusView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -253,9 +262,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1FE6672DA4367B00CFA58F /* bonusWinSound.mp3 in Resources */,
 				DD75F0FC2D80535A00C1A4D5 /* tapSound1.mp3 in Resources */,
 				DD0CAA702D78D75F00F083CB /* Preview Assets.xcassets in Resources */,
 				DD75F0F42D80519200C1A4D5 /* musicMain.mp3 in Resources */,
+				DD1FE6682DA4367B00CFA58F /* chestOpenSound.mp3 in Resources */,
 				DD75F0FA2D8052C900C1A4D5 /* winSound.mp3 in Resources */,
 				DD75F0F62D80522F00C1A4D5 /* lineSound.mp3 in Resources */,
 				DD0CAA8E2D78E17500F083CB /* PassionOne-Regular.ttf in Resources */,
@@ -272,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0CAA8A2D78E07900F083CB /* Game.swift in Sources */,
+				DD1FE6642DA3D3B600CFA58F /* BonusView.swift in Sources */,
 				DD75F0ED2D7F935C00C1A4D5 /* HowToPlay.swift in Sources */,
 				DD0CAA682D78D75E00F083CB /* Potawatomi_OnlineApp.swift in Sources */,
 				DD75F0EF2D7F9A1800C1A4D5 /* Settings.swift in Sources */,

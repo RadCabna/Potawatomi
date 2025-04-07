@@ -43,11 +43,21 @@ struct Rules {
     var rulesText: String
 }
 
+struct BonusChest {
+    var hasBonus: Bool
+    var chestImage = "closeChest"
+    var shineScale: CGFloat = 0
+    var shineOpacity: CGFloat = 0
+    var shineAngle: CGFloat = 0
+}
+
 class Arrays {
+    
+    static var bonusChestArray: [BonusChest] = [BonusChest(hasBonus: true), BonusChest(hasBonus: false), BonusChest(hasBonus: false)]
     
     static var rulesArray = [
     Rules(rulesImage: "ruleImage1", rulesText: "1. Placement Phase Players take turns placing their 9 pieces on empty intersections of the board. Creating a ''mill'' (three pieces in a straight line) allows the player to remove an opponent’s piece. Pieces in a mill cannot be removed unless all remaining opponent pieces are part of mills. Once all pieces are placed, the game transitions to the movement phase."),
-    Rules(rulesImage: "ruleImage2", rulesText: "2. Movement Phase Players take turns moving their pieces to an adjacent connected node. Forming a mill during this phase also grants the ability to remove an opponent’s piece. The game continues until one player is reduced to three pieces."),
+    Rules(rulesImage: "ruleImage2", rulesText: "0. Movement Phase Players take turns moving their pieces to an adjacent connected node. Forming a mill during this phase also grants the ability to remove an opponent’s piece. The game continues until one player is reduced to three pieces."),
     Rules(rulesImage: "ruleImage3", rulesText: "3. Jumping & Endgame When a player has only three pieces left, they can move freely to any empty node. A player loses if they have fewer than three pieces or are completely blocked from making a move. The key to victory is strategic positioning, forming mills, and blocking your opponent’s moves!")
     ]
     
@@ -76,16 +86,16 @@ class Arrays {
         ]
     
     static var rectanglesOnGameField: [[Thunder]] = [
-        [Thunder(positionX: -135, positionY: -135), Thunder(positionX: 0, positionY: -135), Thunder(positionX: 135, positionY: -135)],
-        [Thunder(positionX: -98, positionY: -98), Thunder(positionX: 0, positionY: -98), Thunder(positionX: 98, positionY: -98)],
-        [Thunder(positionX: -61, positionY: -61), Thunder(positionX: 0, positionY: -61), Thunder(positionX: 61, positionY: -61)],
+        [Thunder(positionX: -106, positionY: -106), Thunder(positionX: 0, positionY: -151), Thunder(positionX: 106, positionY: -106)],
+        [Thunder(positionX: -82, positionY: -82), Thunder(positionX: 0, positionY: -116), Thunder(positionX: 82, positionY: -82)],
+        [Thunder(positionX: -58, positionY: -58), Thunder(positionX: 0, positionY: -82), Thunder(positionX: 58, positionY: -58)],
         
-        [Thunder(positionX: -135, positionY: -2), Thunder(positionX: -98, positionY: -2), Thunder(positionX: -61, positionY: -2)],
-        [Thunder(positionX: 61, positionY: -2), Thunder(positionX: 98, positionY: -2), Thunder(positionX: 135, positionY: -2)],
+        [Thunder(positionX: -151, positionY: 0), Thunder(positionX: -116, positionY: -0), Thunder(positionX: -82, positionY: -0)],
+        [Thunder(positionX: 82, positionY: -0), Thunder(positionX: 116, positionY: -0), Thunder(positionX: 151, positionY: -0)],
         
-        [Thunder(positionX: -61, positionY: 61), Thunder(positionX: 0, positionY: 61), Thunder(positionX: 61, positionY: 61)],
-        [Thunder(positionX: -98, positionY: 98), Thunder(positionX: 0, positionY: 98), Thunder(positionX: 98, positionY: 98)],
-        [Thunder(positionX: -135, positionY: 135), Thunder(positionX: 0, positionY: 135), Thunder(positionX: 135, positionY: 135)]
+        [Thunder(positionX: -58, positionY: 58), Thunder(positionX: 0, positionY: 82), Thunder(positionX: 58, positionY: 58)],
+        [Thunder(positionX: -82, positionY: 82), Thunder(positionX: 0, positionY: 116), Thunder(positionX: 82, positionY: 82)],
+        [Thunder(positionX: -106, positionY: 106), Thunder(positionX: 0, positionY: 151), Thunder(positionX: 106, positionY: 106)]
     ]
     
     static var blueLinesOnGameField: [[Lines]] = [
@@ -94,6 +104,8 @@ class Arrays {
     [Lines(itemName: "blueVertical4", positionX: 0, positionY: -98), Lines(itemName: "blueVertical4", positionX: 0, positionY: 98)],
     [Lines(itemName: "blueHorizontal1", positionX: 0, positionY: -139), Lines(itemName: "blueHorizontal2", positionX: 0, positionY: -98), Lines(itemName: "blueHorizontal3", positionX: 0, positionY: -58)],
     [Lines(itemName: "blueHorizontal1", positionX: 0, positionY: 139), Lines(itemName: "blueHorizontal2", positionX: 0, positionY: 98), Lines(itemName: "blueHorizontal3", positionX: 0, positionY: 58)],
+    [Lines(itemName: "blueHorizontal4", positionX: -98, positionY: 0), Lines(itemName: "blueHorizontal4", positionX: 98, positionY: 0)],
+    [Lines(itemName: "blueHorizontal4", positionX: -98, positionY: 0), Lines(itemName: "blueHorizontal4", positionX: 98, positionY: 0)],
     [Lines(itemName: "blueHorizontal4", positionX: -98, positionY: 0), Lines(itemName: "blueHorizontal4", positionX: 98, positionY: 0)]
     ]
     
@@ -103,7 +115,9 @@ class Arrays {
     [Lines(itemName: "redVertical4", positionX: 0, positionY: -98), Lines(itemName: "redVertical4", positionX: 0, positionY: 98)],
     [Lines(itemName: "redHorizontal1", positionX: 0, positionY: -139), Lines(itemName: "redHorizontal2", positionX: 0, positionY: -98), Lines(itemName: "redHorizontal3", positionX: 0, positionY: -58)],
     [Lines(itemName: "redHorizontal1", positionX: 0, positionY: 139), Lines(itemName: "redHorizontal2", positionX: 0, positionY: 98), Lines(itemName: "redHorizontal3", positionX: 0, positionY: 58)],
-    [Lines(itemName: "redHorizontal4", positionX: -98, positionY: 0), Lines(itemName: "redHorizontal4", positionX: 98, positionY: 0)]
+    [Lines(itemName: "redHorizontal4", positionX: -98, positionY: 0), Lines(itemName: "redHorizontal4", positionX: 98, positionY: 0)],
+    [Lines(itemName: "blueHorizontal4", positionX: -98, positionY: 0), Lines(itemName: "blueHorizontal4", positionX: 98, positionY: 0)],
+    [Lines(itemName: "blueHorizontal4", positionX: -98, positionY: 0), Lines(itemName: "blueHorizontal4", positionX: 98, positionY: 0)]
     ]
     
     static var yellowLinesOnGameField: [[Lines]] = [
