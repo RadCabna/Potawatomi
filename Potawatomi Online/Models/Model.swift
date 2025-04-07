@@ -57,7 +57,7 @@ class Arrays {
     
     static var rulesArray = [
     Rules(rulesImage: "ruleImage1", rulesText: "1. Placement Phase Players take turns placing their 9 pieces on empty intersections of the board. Creating a ''mill'' (three pieces in a straight line) allows the player to remove an opponent’s piece. Pieces in a mill cannot be removed unless all remaining opponent pieces are part of mills. Once all pieces are placed, the game transitions to the movement phase."),
-    Rules(rulesImage: "ruleImage2", rulesText: "0. Movement Phase Players take turns moving their pieces to an adjacent connected node. Forming a mill during this phase also grants the ability to remove an opponent’s piece. The game continues until one player is reduced to three pieces."),
+    Rules(rulesImage: "ruleImage2", rulesText: "2. Movement Phase Players take turns moving their pieces to an adjacent connected node. Forming a mill during this phase also grants the ability to remove an opponent’s piece. The game continues until one player is reduced to three pieces."),
     Rules(rulesImage: "ruleImage3", rulesText: "3. Jumping & Endgame When a player has only three pieces left, they can move freely to any empty node. A player loses if they have fewer than three pieces or are completely blocked from making a move. The key to victory is strategic positioning, forming mills, and blocking your opponent’s moves!")
     ]
     
